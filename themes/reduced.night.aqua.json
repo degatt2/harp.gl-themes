@@ -56,7 +56,7 @@
         "fontCatalogName": "fira",
         "color": "#B3B3B3"
     },
-    "fontCatalogs": [{ "name": "fira", "url": "fonts/Default_FontCatalog.json" }],
+    "fontCatalogs": [{ "name": "fira", "url": "https://raw.githubusercontent.com/degatt2/harp.gl-themes/master/themes/fonts/Default_Fonts.json" }],
     "styles": [
         {
             "description": "category: urban_area, render order: 0, ",
