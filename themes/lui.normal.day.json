@@ -1,0 +1,1616 @@
+{
+    "fog": { "startRatio": 0.85, "color": "#E6FCFF" },
+    "lights": [
+        { "type": "ambient", "color": "#FFFFFF", "name": "ambientLight", "intensity": 0.8 },
+        {
+            "type": "directional",
+            "color": "#FFFFFF",
+            "name": "light1",
+            "intensity": 0.4,
+            "direction": { "x": 1, "y": 0, "z": 1 }
+        },
+        {
+            "type": "directional",
+            "color": "#FFFFFF",
+            "name": "light2",
+            "intensity": 0.4,
+            "direction": { "x": -1, "y": 0, "z": 1 }
+        }
+    ],
+    "clearColor": "#EFF4F5",
+    "images": {
+        "icons_day_maki": { "url": "maki_icons.png", "preload": true, "atlas": "maki_icons.json" }
+    },
+    "textStyles": [],
+    "defaultTextStyle": {
+        "name": "defaultTextStyle",
+        "fontCatalogName": "fira",
+        "backgroundSize": 16,
+        "color": "#6D7477",
+        "backgroundColor": "#F7FBFD",
+        "backgroundOpacity": 0.5,
+        "lineWidth": 256
+    },
+    "fontCatalogs": [{ "name": "fira", "url": "fonts/Default_FontCatalog.json" }],
+    "styles": [
+        {
+            "description": "residential",
+            "when": "$layer == 'roads' && ((kind == 'minor_road') && (((kind_detail == 'unclassified') || (kind_detail == 'residential')) || (kind_detail == 'service')))",
+            "technique": "text",
+            "attr": {
+                "color": "#18181A",
+                "size": 12,
+                "priority": 20,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "renderOrder": 11,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "residential",
+            "when": "$layer == 'roads' && ((kind == 'minor_road') && (((kind_detail == 'unclassified') || (kind_detail == 'residential')) || (kind_detail == 'service')))",
+            "technique": "solid-line",
+            "attr": {
+                "color": "#FFFFFF",
+                "secondaryColor": "#D6D9E6",
+                "lineWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [10.8, 13.5, 14.5, 15.7, 18],
+                    "values": [10, 13, 9, 5, 3]
+                },
+                "secondaryWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [14, 14.5, 15.7, 18],
+                    "values": [0, 15, 7.5, 4]
+                },
+                "clipping": false
+            },
+            "renderOrder": 15.2,
+            "final": true,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "minor roads",
+            "when": "$layer == 'roads' && (kind == 'minor_road')",
+            "technique": "text",
+            "attr": {
+                "color": "#18181A",
+                "size": 12,
+                "priority": 20,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "renderOrder": 10,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "when": "$layer == 'roads' && (kind == 'minor_road')",
+            "technique": "solid-line",
+            "attr": {
+                "color": "#FFFFFF",
+                "secondaryColor": "#D6D9E6",
+                "lineWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [9.8, 10.8, 12.2, 14, 15.7, 18],
+                    "values": [170, 70, 40, 15, 9, 2]
+                },
+                "secondaryWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [9.8, 10.8, 12.2, 14, 15.7, 18],
+                    "values": [0, 140, 62, 18, 11, 5]
+                },
+                "clipping": false
+            },
+            "renderOrder": 15.1,
+            "final": true,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "tertiary",
+            "when": "$layer == 'roads' && ((kind == 'major_road') && (kind_detail == 'tertiary'))",
+            "technique": "text",
+            "attr": {
+                "color": "#18181A",
+                "size": 13,
+                "priority": 15,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "renderOrder": 12,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "when": "$layer == 'roads' && ((kind == 'major_road') && (kind_detail == 'tertiary'))",
+            "technique": "solid-line",
+            "attr": {
+                "color": "#FFFFFF",
+                "secondaryColor": "#D6D9E6",
+                "lineWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [9.8, 10.8, 12.2, 14, 15.7, 18],
+                    "values": [170, 70, 40, 15, 9, 4]
+                },
+                "secondaryWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [9.8, 10.8, 12.2, 14, 15.7, 18],
+                    "values": [0, 140, 62, 18, 11, 5]
+                },
+                "clipping": false
+            },
+            "renderOrder": 10.3,
+            "final": true,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "secondary",
+            "when": "$layer == 'roads' && ((kind == 'major_road') && (kind_detail == 'secondary'))",
+            "technique": "text",
+            "attr": {
+                "color": "#18181A",
+                "size": 13,
+                "priority": 20,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "renderOrder": 13,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "when": "$layer == 'roads' && ((kind == 'major_road') && (kind_detail == 'secondary'))",
+            "technique": "solid-line",
+            "attr": {
+                "color": "#FFFFFF",
+                "secondaryColor": "#D6D9E6",
+                "lineWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [9.8, 10.8, 12.2, 14, 15.7, 18],
+                    "values": [170, 70, 40, 15, 9, 4]
+                },
+                "secondaryWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [9.8, 10.8, 12.2, 14, 15.7, 18],
+                    "values": [0, 140, 62, 18, 11, 5]
+                },
+                "clipping": false
+            },
+            "renderOrder": 15.3,
+            "final": true,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "primaries and motorway links",
+            "when": "$layer == 'roads' && ((((kind == 'highway') && has(is_link)) || (kind == 'major_road')) || kind_detail in ['primary','primary_link','trunk','trunk_link','motorway','motorway_link'])",
+            "technique": "text",
+            "attr": {
+                "color": "#18181A",
+                "size": 14,
+                "priority": 25,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "renderOrder": 10,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "primaries and motorway",
+            "when": "$layer == 'roads' && ((kind == 'major_road') && !(is_link))",
+            "technique": "solid-line",
+            "attr": {
+                "color": "#FCD976",
+                "secondaryColor": "#E2C163",
+                "lineWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [5.5, 6.6, 8.2, 9.8, 10.8, 12.2, 14, 15.7, 18],
+                    "values": [1300, 750, 300, 170, 90, 50, 20.5, 12.5, 6.5]
+                },
+                "secondaryWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [5.5, 6.6, 8.2, 9.8, 10.8, 12.2, 14, 15.7, 18],
+                    "values": [3200, 1800, 700, 290, 165, 72, 26.5, 15.5, 7.5]
+                },
+                "clipping": false
+            },
+            "renderOrder": 15.4,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "primaries and motorway links",
+            "when": "$layer == 'roads' && ((((kind == 'highway') && has(is_link)) || (kind == 'major_road')) || kind_detail in ['primary','primary_link','trunk','trunk_link','motorway','motorway_link'])",
+            "technique": "solid-line",
+            "attr": {
+                "color": "#FCD976",
+                "secondaryColor": "#FFFFFF",
+                "lineWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [5.5, 6.6, 8.2, 9.8, 10.8, 12.2, 14, 15.7, 18],
+                    "values": [1300, 750, 300, 170, 90, 50, 20.5, 12.5, 6.5]
+                },
+                "secondaryWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [5.5, 6.6, 8.2, 9.8, 10.8, 12.2, 14, 15.7, 18],
+                    "values": [3200, 1800, 700, 290, 165, 72, 26.5, 15.5, 7.5]
+                },
+                "clipping": false
+            },
+            "renderOrder": 15.3,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "highways/motorways",
+            "when": "$layer == 'roads' && ((kind != 'rail') && (kind in ['highway'] && !(has(is_link))))",
+            "technique": "text",
+            "attr": {
+                "color": "#565660",
+                "size": 16,
+                "priority": 35,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "renderOrder": 15,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "when": "$layer == 'roads' && ((kind != 'rail') && (kind in ['highway'] && !(has(is_link))))",
+            "technique": "solid-line",
+            "attr": {
+                "color": "#FCD976",
+                "secondaryColor": "#FFFFFF",
+                "lineWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [5.5, 6.6, 8.2, 9.8, 10.8, 12.2, 14, 15.7, 18],
+                    "values": [1300, 750, 300, 170, 90, 50, 20.5, 12.5, 6.5]
+                },
+                "secondaryWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [5.5, 6.6, 8.2, 9.8, 10.8, 12.2, 14, 15.7, 18],
+                    "values": [3200, 1800, 700, 290, 165, 72, 26.5, 15.5, 7.5]
+                },
+                "clipping": false
+            },
+            "renderOrder": 15.5,
+            "final": true,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "airport runway",
+            "when": "$layer == 'roads' && ((kind != 'rail') && kind in ['runway'])",
+            "technique": "solid-line",
+            "attr": {
+                "color": "#B6BABD",
+                "lineWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [9, 10, 11, 12, 13, 14],
+                    "values": [72, 70, 66, 62, 58, 50]
+                },
+                "clipping": false
+            },
+            "renderOrder": 20,
+            "final": true,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "airport taxiway",
+            "when": "$layer == 'roads' && ((kind != 'rail') && kind_detail in ['taxiway'])",
+            "technique": "solid-line",
+            "attr": {
+                "color": "#B6BABD",
+                "lineWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [11, 12, 13, 14],
+                    "values": [36, 31, 26, 22]
+                },
+                "clipping": false
+            },
+            "renderOrder": 20,
+            "final": true,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "ferry",
+            "when": "$layer == 'roads' && ((kind != 'rail') && kind in ['ferry'])",
+            "technique": "text",
+            "attr": {
+                "color": "#394BA6",
+                "size": 11,
+                "priority": 25,
+                "backgroundColor": "#74CEF0",
+                "backgroundOpacity": 1
+            },
+            "renderOrder": 10,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "ferry",
+            "when": "$layer == 'roads' && ((kind != 'rail') && kind in ['ferry'])",
+            "technique": "dashed-line",
+            "attr": {
+                "clipping": false,
+                "color": "#5B9DCD",
+                "dashSize": {
+                    "interpolation": "Discrete",
+                    "zoomLevels": [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "values": [4000, 2500, 1500, 1200, 560, 100, 50, 25, 16, 12, 10]
+                },
+                "gapSize": {
+                    "interpolation": "Discrete",
+                    "zoomLevels": [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "values": [4000, 2500, 1500, 1200, 300, 100, 50, 25, 16, 12, 10]
+                },
+                "lineWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+                    "values": [320, 160, 80, 40, 15, 9, 6, 3, 1.5, 1]
+                }
+            },
+            "renderOrder": 10,
+            "final": true,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "driveway",
+            "when": "$layer == 'roads' && ((kind != 'rail') && kind_detail in ['driveway','parking_aisle','drive_through'])",
+            "technique": "solid-line",
+            "attr": { "color": "#A8ABA8", "lineWidth": 5, "clipping": false },
+            "renderOrder": 10,
+            "final": true,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "pedestrian paths",
+            "when": "$layer == 'roads' && ((kind != 'rail') && ((kind == 'path') && (kind_detail in ['pedestrian','footway'] || landuse_kind in ['park','residential','footway','garden','pedestrian','grass','allotments','forest','cemetery','natural_wood'])))",
+            "technique": "dashed-line",
+            "attr": {
+                "color": "#FFFFFF",
+                "dashSize": {
+                    "interpolation": "Discrete",
+                    "zoomLevels": [14, 15, 16.2, 17.3, 18.9],
+                    "values": [16, 12, 3, 2, 1.5]
+                },
+                "gapSize": {
+                    "interpolation": "Discrete",
+                    "zoomLevels": [14, 15.3, 17, 18.9],
+                    "values": [0, 4, 2, 1]
+                },
+                "lineWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [14, 16, 17.3, 18.9],
+                    "values": [3.5, 1, 0.75, 0.4]
+                },
+                "clipping": false
+            },
+            "renderOrder": 10,
+            "final": true,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "Railway & Trams",
+            "when": "$layer == 'roads' && (((($geometryType ^= 'line') && (kind == 'rail')) && kind_detail in ['rail','light_rail','tram']) && (kind_detail == 'tram'))",
+            "technique": "solid-line",
+            "attr": {
+                "color": "#B9B9B9",
+                "lineWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [13, 16, 17],
+                    "values": [1.5, 0.75, 0.4]
+                }
+            },
+            "renderOrder": 50,
+            "final": true,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "Railway & Trams Industrial",
+            "when": "$layer == 'roads' && (((($geometryType ^= 'line') && (kind == 'rail')) && kind_detail in ['rail','light_rail','tram']) && service in ['siding','industrial','yard','spur','crossover'])",
+            "technique": "solid-line",
+            "attr": { "color": "#A4A8A2" },
+            "renderOrder": 5,
+            "final": true,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "Railway+S-Bahn background",
+            "when": "$layer == 'roads' && (((($geometryType ^= 'line') && (kind == 'rail')) && kind_detail in ['rail','light_rail','tram']) && !(is_tunnel))",
+            "technique": "solid-line",
+            "attr": {
+                "color": "#B4CAD8",
+                "lineWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [13, 14, 17.9],
+                    "values": [3.5, 1, 0.5]
+                }
+            },
+            "renderOrder": 5.2,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "Railway+S-Bahn background",
+            "when": "$layer == 'roads' && (((($geometryType ^= 'line') && (kind == 'rail')) && kind_detail in ['rail','light_rail','tram']) && is_tunnel)",
+            "technique": "solid-line",
+            "attr": {
+                "color": "#FF0000",
+                "lineWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [13, 14],
+                    "values": [3.5, 2.5]
+                }
+            },
+            "renderOrder": 5.1,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "Railway+S-Bahn dashes",
+            "when": "$layer == 'roads' && (((($geometryType ^= 'line') && (kind == 'rail')) && kind_detail in ['rail','light_rail','tram']) && !(is_tunnel))",
+            "technique": "dashed-line",
+            "attr": {
+                "color": "#98AAB6",
+                "dashSize": 1,
+                "gapSize": 80,
+                "lineWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [15.2, 15.9, 17.9],
+                    "values": [5, 3, 1.5]
+                }
+            },
+            "renderOrder": 5.25,
+            "final": true,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "Railway+S-Bahn dashes",
+            "when": "$layer == 'roads' && (((($geometryType ^= 'line') && (kind == 'rail')) && kind_detail in ['rail','light_rail','tram']) && is_tunnel)",
+            "technique": "dashed-line",
+            "attr": {
+                "color": "#DDDDDD",
+                "dashSize": {
+                    "interpolation": "Discrete",
+                    "zoomLevels": [10, 11, 12, 13, 14, 15, 16],
+                    "values": [100, 40, 24, 30, 25, 15, 8]
+                },
+                "gapSize": {
+                    "interpolation": "Discrete",
+                    "zoomLevels": [10, 11, 12, 13, 14, 15, 16],
+                    "values": [100, 40, 24, 30, 25, 15, 8]
+                },
+                "lineWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [13, 13, 14],
+                    "values": [2.75, 2.75, 1.75]
+                }
+            },
+            "renderOrder": 5.15,
+            "final": true,
+            "layer": "roads",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "canal/river level > 9 tunnel",
+            "when": "$layer == 'water' && ((($geometryType ^= 'line') && (kind in ['canal','river'] && ($level > 9))) && has(is_tunnel))",
+            "technique": "solid-line",
+            "attr": {
+                "color": "#A0CDE9",
+                "lineWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [10, 11, 12, 13, 14],
+                    "values": [28, 20, 12, 8, 4]
+                }
+            },
+            "renderOrder": 3,
+            "layer": "water",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "canal/river level > 9 NOT(tunnel)",
+            "when": "$layer == 'water' && ((($geometryType ^= 'line') && (kind in ['canal','river'] && ($level > 9))) && !(has(is_tunnel)))",
+            "technique": "solid-line",
+            "attr": {
+                "color": "#A0CDE9",
+                "lineWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [10, 11, 12, 13, 14],
+                    "values": [28, 20, 12, 8, 4]
+                }
+            },
+            "renderOrder": 3,
+            "layer": "water",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "canal/river level > 9",
+            "when": "$layer == 'water' && ((($geometryType ^= 'line') && (kind in ['canal','river'] && ($level > 9))) && !(has(is_tunnel)))",
+            "technique": "text",
+            "attr": {
+                "color": "#2C70C3",
+                "size": 12.5,
+                "fontStyle": "Italic",
+                "priority": -40,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0
+            },
+            "renderOrder": 3,
+            "layer": "water",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "basin/stream/strait/drain level > 9 tunnel",
+            "when": "$layer == 'water' && ((($geometryType ^= 'line') && (kind in ['basin','stream','strait','drain','ditch'] && ($level > 9))) && has(is_tunnel))",
+            "technique": "solid-line",
+            "attr": {
+                "color": "#A0CDE9",
+                "lineWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [10, 11, 12, 13, 14],
+                    "values": [22, 16, 10, 6, 3]
+                }
+            },
+            "renderOrder": 3,
+            "layer": "water",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "basin/stream/strait/drain level > 9",
+            "when": "$layer == 'water' && ((($geometryType ^= 'line') && (kind in ['basin','stream','strait','drain','ditch'] && ($level > 9))) && !(has(is_tunnel)))",
+            "technique": "solid-line",
+            "attr": {
+                "color": "#A0CDE9",
+                "lineWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [10, 11, 12, 13, 14],
+                    "values": [22, 16, 10, 6, 3]
+                }
+            },
+            "renderOrder": 3,
+            "layer": "water",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "dock/lake/strait/ocean/swimming_pool",
+            "when": "$layer == 'water' && (($geometryType ^= 'polygon') && kind in ['dock','lake','ocean','swimming_pool'])",
+            "technique": "fill",
+            "attr": { "color": "#A0CDE9" },
+            "renderOrder": 4,
+            "layer": "water",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "level <= 7",
+            "when": "$layer == 'water' && (($geometryType ^= 'polygon') && ($level <= 7))",
+            "technique": "fill",
+            "attr": { "color": "#A0CDE9" },
+            "renderOrder": 4,
+            "layer": "water",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "level > 7",
+            "when": "$layer == 'water' && (($geometryType ^= 'polygon') && ($level > 7))",
+            "technique": "fill",
+            "attr": { "color": "#A0CDE9" },
+            "renderOrder": 4,
+            "layer": "water",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "ocean",
+            "when": "$layer == 'water' && (($geometryType ^= 'point') && (kind == 'ocean'))",
+            "technique": "text",
+            "attr": {
+                "fontStyle": "Italic",
+                "size": { "interpolation": "Linear", "zoomLevels": [1, 8], "values": [11, 14] },
+                "priority": -45,
+                "color": "#79a1bf",
+                "backgroundColor": "#A0CDE9",
+                "backgroundOpacity": 0.5
+            },
+            "renderOrder": 120,
+            "layer": "water",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "sea",
+            "when": "$layer == 'water' && (($geometryType ^= 'point') && (kind == 'sea'))",
+            "technique": "text",
+            "attr": {
+                "fontStyle": "Italic",
+                "size": { "interpolation": "Linear", "zoomLevels": [1, 8], "values": [11, 14] },
+                "priority": -50,
+                "color": "#2C70C3"
+            },
+            "renderOrder": 120,
+            "layer": "water",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "lakes displayLevel < 3",
+            "when": "$layer == 'water' && ((($geometryType ^= 'point') && ((kind == 'lake') || has(area))) && (($displayLevel < 3) && (area < 38682364928)))",
+            "technique": "text",
+            "attr": {
+                "fontStyle": "Italic",
+                "size": { "interpolation": "Linear", "zoomLevels": [1, 8], "values": [11, 14] },
+                "priority": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [1, 2],
+                    "values": [-100, -30]
+                },
+                "color": "#2C70C3"
+            },
+            "renderOrder": 120,
+            "final": true,
+            "layer": "water",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "lakes displayLevel < 4",
+            "when": "$layer == 'water' && ((($geometryType ^= 'point') && ((kind == 'lake') || has(area))) && (($displayLevel < 4) && (area < 6682364928)))",
+            "technique": "text",
+            "attr": {
+                "size": { "interpolation": "Linear", "zoomLevels": [1, 8], "values": [11, 14] },
+                "priority": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [1, 2],
+                    "values": [-100, -30]
+                },
+                "color": "#2C70C3"
+            },
+            "renderOrder": 120,
+            "final": true,
+            "layer": "water",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "lakes displayLevel < 5",
+            "when": "$layer == 'water' && ((($geometryType ^= 'point') && ((kind == 'lake') || has(area))) && (($displayLevel < 5) && (area < 160000000)))",
+            "technique": "text",
+            "attr": {
+                "size": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [2, 3, 4, 5],
+                    "values": [9.6, 9.6, 11.2, 12.8]
+                },
+                "priority": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [1, 2],
+                    "values": [-100, -30]
+                },
+                "color": "#2C70C3"
+            },
+            "renderOrder": 120,
+            "final": true,
+            "layer": "water",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "lakes displayLevel < 6",
+            "when": "$layer == 'water' && ((($geometryType ^= 'point') && ((kind == 'lake') || has(area))) && (($displayLevel < 6) && (area < 110000000)))",
+            "technique": "text",
+            "attr": {
+                "size": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [2, 3, 4, 5],
+                    "values": [9.6, 9.6, 11.2, 12.8]
+                },
+                "priority": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [1, 2],
+                    "values": [-100, -30]
+                },
+                "color": "#2C70C3"
+            },
+            "renderOrder": 120,
+            "final": true,
+            "layer": "water",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "lakes displayLevel < 7",
+            "when": "$layer == 'water' && ((($geometryType ^= 'point') && ((kind == 'lake') || has(area))) && (($displayLevel < 7) && (area < 80000000)))",
+            "technique": "text",
+            "attr": {
+                "size": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [2, 3, 4, 5],
+                    "values": [9.6, 9.6, 11.2, 12.8]
+                },
+                "priority": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [1, 2],
+                    "values": [-100, -30]
+                },
+                "color": "#2C70C3"
+            },
+            "renderOrder": 120,
+            "final": true,
+            "layer": "water",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "lakes displayLevel < 10",
+            "when": "$layer == 'water' && ((($geometryType ^= 'point') && ((kind == 'lake') || has(area))) && (($displayLevel < 10) && (area < 5000000)))",
+            "technique": "text",
+            "attr": {
+                "size": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [2, 3, 4, 5],
+                    "values": [9.6, 9.6, 11.2, 12.8]
+                },
+                "priority": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [1, 2],
+                    "values": [-100, -30]
+                },
+                "color": "#2C70C3"
+            },
+            "renderOrder": 120,
+            "final": true,
+            "layer": "water",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "lakes displayLevel < 11",
+            "when": "$layer == 'water' && ((($geometryType ^= 'point') && ((kind == 'lake') || has(area))) && (($displayLevel < 11) && (area < 2000000)))",
+            "technique": "text",
+            "attr": {
+                "size": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [2, 3, 4, 5],
+                    "values": [9.6, 9.6, 11.2, 12.8]
+                },
+                "priority": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [1, 2],
+                    "values": [-100, -30]
+                },
+                "color": "#2C70C3"
+            },
+            "renderOrder": 120,
+            "final": true,
+            "layer": "water",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "lakes displayLevel < 12",
+            "when": "$layer == 'water' && ((($geometryType ^= 'point') && ((kind == 'lake') || has(area))) && (($displayLevel < 12) && (area < 1000000)))",
+            "technique": "text",
+            "attr": {
+                "size": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [2, 3, 4, 5],
+                    "values": [9.6, 9.6, 11.2, 12.8]
+                },
+                "priority": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [1, 2],
+                    "values": [-100, -30]
+                },
+                "color": "#2C70C3"
+            },
+            "renderOrder": 120,
+            "final": true,
+            "layer": "water",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "lakes displayLevel < 13",
+            "when": "$layer == 'water' && ((($geometryType ^= 'point') && ((kind == 'lake') || has(area))) && (($displayLevel < 13) && (area < 500000)))",
+            "technique": "text",
+            "attr": {
+                "size": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [2, 3, 4, 5],
+                    "values": [9.6, 9.6, 11.2, 12.8]
+                },
+                "priority": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [1, 2],
+                    "values": [-100, -30]
+                },
+                "color": "#2C70C3"
+            },
+            "renderOrder": 120,
+            "final": true,
+            "layer": "water",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "lakes (on high level, only biggest lakes)",
+            "when": "$layer == 'water' && (($geometryType ^= 'point') && ((kind == 'lake') || has(area)))",
+            "technique": "text",
+            "attr": {
+                "size": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [2, 3, 4, 5],
+                    "values": [9.6, 9.6, 11.2, 12.8]
+                },
+                "priority": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [1, 2],
+                    "values": [-100, -30]
+                },
+                "color": "#2C70C3",
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0
+            },
+            "renderOrder": 120,
+            "final": true,
+            "layer": "water",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "transit polygons are platforms, bus, tram stops",
+            "when": "$layer == 'transit' && (($geometryType ^= 'polygon') && (!(has(layer)) || (layer == 0)))",
+            "technique": "fill",
+            "attr": { "color": "#EEEEEE", "opacity": 0.5 },
+            "renderOrder": 3,
+            "layer": "transit",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "Style group for transit",
+            "when": "$layer == 'transit' && ($geometryType ^= 'point')",
+            "technique": "text",
+            "attr": {
+                "color": "#3D3B3C",
+                "size": 16,
+                "priority": 100,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "renderOrder": 5,
+            "layer": "transit",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "Disputed Border Line",
+            "when": "$layer == 'boundaries' && (($geometryType ^= 'line') && kind in ['disputed','indefinite','indeterminate','lease_limit','line_of_control','overlay_limit'])",
+            "technique": "dashed-line",
+            "attr": {
+                "color": "#7C7C7C",
+                "lineWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    "values": [4000, 2600, 1500, 1000, 720, 520, 270, 140, 90, 60, 30, 15, 10, 5, 2]
+                },
+                "dashSize": {
+                    "interpolation": "Cubic",
+                    "zoomLevels": [10, 11, 12, 13, 14],
+                    "values": [1024, 512, 256, 128, 64]
+                },
+                "gapSize": {
+                    "interpolation": "Cubic",
+                    "zoomLevels": [10, 11, 12, 13, 14],
+                    "values": [2000, 1500, 400, 200, 64]
+                }
+            },
+            "renderOrder": 4.1,
+            "layer": "boundaries",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "Disputed Border Line - Text",
+            "when": "$layer == 'boundaries' && (($geometryType ^= 'line') && kind in ['disputed','indefinite','indeterminate','lease_limit','line_of_control','overlay_limit'])",
+            "technique": "text",
+            "attr": {
+                "priority": 100,
+                "color": "#393939",
+                "size": 12.8,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "renderOrder": 0,
+            "layer": "boundaries",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "country border",
+            "when": "$layer == 'boundaries' && (($geometryType ^= 'line') && (kind == 'country'))",
+            "technique": "solid-line",
+            "attr": {
+                "color": "#b7d1d7",
+                "secondaryColor": "#FFFFFF",
+                "lineWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [3, 6.2, 7.7, 9, 11, 12.6, 14.6, 16.9],
+                    "values": [4000, 1000, 300, 150, 60, 20, 8, 3]
+                },
+                "secondaryWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [6.2, 7.7, 9, 11, 12.6, 14.6, 16.9],
+                    "values": [1100, 310, 160, 70, 50, 20, 4]
+                }
+            },
+            "renderOrder": 4.1,
+            "layer": "boundaries",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "country border",
+            "when": "$layer == 'boundaries' && (($geometryType ^= 'line') && (kind == 'country'))",
+            "technique": "text",
+            "attr": {
+                "priority": 100,
+                "color": "#393939",
+                "size": 12.8,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "renderOrder": 1,
+            "layer": "boundaries",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "region border",
+            "when": "$layer == 'boundaries' && (($geometryType ^= 'line') && (kind == 'region'))",
+            "technique": "solid-line",
+            "attr": {
+                "color": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [6, 7.2],
+                    "values": ["#B4B7C5", "#89ADAE"]
+                },
+                "secondaryColor": "#DDDDDD",
+                "lineWidth": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [6.2, 7.7, 9, 11, 12.6, 14.6, 16.9],
+                    "values": [1500, 300, 150, 60, 20, 8, 2]
+                },
+                "secondaryWidth": 0
+            },
+            "renderOrder": 4.1,
+            "layer": "boundaries",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "Region Borders",
+            "when": "$layer == 'boundaries' && (($geometryType ^= 'line') && (kind == 'region'))",
+            "technique": "text",
+            "attr": {
+                "priority": 90,
+                "color": "#393939",
+                "size": 12.8,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "renderOrder": 2,
+            "layer": "boundaries",
+            "styleSet": "tilezen"
+        },
+        {
+            "when": "$layer == 'boundaries' && ($geometryType ^= 'point')",
+            "technique": "text",
+            "attr": {
+                "color": "#6D7477",
+                "size": 27.2,
+                "priority": 200,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "renderOrder": 7,
+            "layer": "boundaries",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "builtup area",
+            "when": "$layer ^= 'landuse' && (($geometryType ^= 'polygon') && kind in ['urban_area'])",
+            "technique": "fill",
+            "attr": { "color": "#EFF4F5" },
+            "renderOrder": 0,
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "parking",
+            "when": "$layer ^= 'landuse' && (($geometryType ^= 'polygon') && kind in ['parking'])",
+            "technique": "fill",
+            "attr": { "opacity": 1, "color": "#EFF4F5" },
+            "renderOrder": 0,
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "forest",
+            "when": "$layer ^= 'landuse' && (($geometryType ^= 'polygon') && kind in ['forest'])",
+            "technique": "fill",
+            "attr": {
+                "color": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [5.8, 7.8],
+                    "values": ["#DEEEED", "#CCEAE8"]
+                }
+            },
+            "renderOrder": 0.1,
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "military",
+            "when": "$layer ^= 'landuse' && (($geometryType ^= 'polygon') && kind in ['military'])",
+            "technique": "fill",
+            "attr": { "color": "#F6F7FF" },
+            "renderOrder": 0.2,
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "nature_reserve",
+            "when": "$layer ^= 'landuse' && (($geometryType ^= 'polygon') && kind in ['nature_reserve'])",
+            "technique": "fill",
+            "attr": { "color": "#9FE0D0" },
+            "renderOrder": 0.2,
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "park",
+            "when": "$layer ^= 'landuse' && (($geometryType ^= 'polygon') && kind in ['park'])",
+            "technique": "fill",
+            "attr": { "color": "#B8E2DF" },
+            "renderOrder": 0.2,
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "golf_course",
+            "when": "$layer ^= 'landuse' && (($geometryType ^= 'polygon') && kind in ['golf_course'])",
+            "technique": "fill",
+            "attr": { "color": "#B8E2DF" },
+            "renderOrder": 0.2,
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "allotments",
+            "when": "$layer ^= 'landuse' && (($geometryType ^= 'polygon') && kind in ['allotments'])",
+            "technique": "fill",
+            "attr": { "color": "#B8E2DF" },
+            "renderOrder": 0.2,
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "reservation",
+            "when": "$layer ^= 'landuse' && (($geometryType ^= 'polygon') && kind in ['reservation'])",
+            "technique": "fill",
+            "attr": { "color": "#C7E4E2" },
+            "renderOrder": 0.2,
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "aerodrome",
+            "when": "$layer ^= 'landuse' && (($geometryType ^= 'polygon') && (kind ^= 'aerodrome'))",
+            "technique": "fill",
+            "attr": { "color": "#E3E6EE" },
+            "renderOrder": 0.2,
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "runway",
+            "when": "$layer ^= 'landuse' && (($geometryType ^= 'polygon') && (kind ^= 'runway'))",
+            "technique": "fill",
+            "attr": { "color": "#D8DCE7" },
+            "renderOrder": 0.3,
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "national_park",
+            "when": "$layer ^= 'landuse' && (($geometryType ^= 'polygon') && (kind ^= 'national_park'))",
+            "technique": "fill",
+            "attr": { "color": "#9FE0D0" },
+            "renderOrder": 0.2,
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "hospital",
+            "when": "$layer ^= 'landuse' && (($geometryType ^= 'polygon') && (kind ^= 'hospital'))",
+            "technique": "fill",
+            "attr": { "color": "#ECD5D8" },
+            "renderOrder": 0.2,
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "cemetery",
+            "when": "$layer ^= 'landuse' && (($geometryType ^= 'polygon') && (kind ^= 'cemetery'))",
+            "technique": "fill",
+            "attr": { "color": "#B8E2DF" },
+            "renderOrder": 0.2,
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "sports_centre",
+            "when": "$layer ^= 'landuse' && (($geometryType ^= 'polygon') && kind in ['sports_centre'])",
+            "technique": "fill",
+            "attr": { "color": "#A4DBD7" },
+            "renderOrder": 0.2,
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "industrial",
+            "when": "$layer ^= 'landuse' && (($geometryType ^= 'polygon') && kind in ['industrial'])",
+            "technique": "fill",
+            "attr": { "color": "#E3EBF0" },
+            "renderOrder": 0.2,
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "shopping",
+            "when": "$layer ^= 'landuse' && (($geometryType ^= 'polygon') && kind in ['commercial'])",
+            "technique": "fill",
+            "attr": { "color": "#E3ECEE" },
+            "renderOrder": 0.2,
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "university",
+            "when": "$layer ^= 'landuse' && (($geometryType ^= 'polygon') && kind in ['university'])",
+            "technique": "fill",
+            "attr": { "color": "#E5E1CE" },
+            "renderOrder": 0.2,
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "railyard",
+            "when": "$layer ^= 'landuse' && (($geometryType ^= 'polygon') && kind in ['railway'])",
+            "technique": "fill",
+            "attr": { "color": "#E3EBF0" },
+            "renderOrder": 0.2,
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "animal park",
+            "when": "$layer ^= 'landuse' && (($geometryType ^= 'polygon') && kind in ['zoo'])",
+            "technique": "fill",
+            "attr": {
+                "color": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [10, 11, 12, 13, 14],
+                    "values": ["#D9E1E4", "#D9E1E4", "#D9E1E4", "#D9E1E4", "#F8FBFD"]
+                }
+            },
+            "renderOrder": 0.2,
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "beach",
+            "when": "$layer ^= 'landuse' && (($geometryType ^= 'polygon') && (kind in ['beach'] || (kind $= '_site')))",
+            "technique": "fill",
+            "attr": { "color": "#F1ECD5" },
+            "renderOrder": 1,
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "Continent",
+            "when": "$layer == 'earth' && kind in ['continent']",
+            "technique": "text",
+            "attr": {
+                "size": 12,
+                "priority": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [2, 5, 6],
+                    "values": [2000, 2000, 0]
+                },
+                "color": "#E48892",
+                "fontVariant": "AllCaps",
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "renderOrder": 3,
+            "layer": "earth",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "Island",
+            "when": "$layer == 'earth' && kind in ['island']",
+            "technique": "text",
+            "attr": {
+                "size": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [10, 11, 12, 13, 14, 15, 16, 17],
+                    "values": [10, 10, 11, 11, 12, 12, 13, 13]
+                },
+                "color": "#777777",
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "renderOrder": 4,
+            "layer": "earth",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "country",
+            "when": "$layer == 'places' && kind in ['country']",
+            "technique": "text",
+            "attr": {
+                "priority": 90,
+                "size": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [0, 2, 2, 4, 5, 6, 7, 8],
+                    "values": [0, 0, 14, 14, 15, 20, 26, 28]
+                },
+                "color": "#000000",
+                "fontVariant": "",
+                "textFadeTime": 0.75,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "final": true,
+            "renderOrder": 5,
+            "layer": "places",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "region",
+            "when": "$layer == 'places' && kind in ['region']",
+            "technique": "text",
+            "attr": {
+                "size": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [0, 4, 4, 5, 6, 7],
+                    "values": [0, 0, 11, 12, 15, 16]
+                },
+                "priority": 65,
+                "color": "#000000",
+                "fontVariant": "AllCaps",
+                "textFadeTime": 0.75,
+                "iconFadeTime": 0.5,
+                "fadeNear": 0.8,
+                "fadeFar": 0.9,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "renderOrder": 6,
+            "layer": "places",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "CityCenter_Class1 country capital",
+            "when": "$layer == 'places' && (((kind == 'locality') && has(population)) && ((population >= 1000000) && has(country_capital)))",
+            "technique": "text",
+            "attr": {
+                "priority": 58,
+                "size": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [7, 8, 9, 10, 11, 12, 13, 14, 14],
+                    "values": [15, 17, 18, 20, 22, 24, 26, 26, 0]
+                },
+                "color": "#000000",
+                "textFadeTime": 0.75,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "final": true,
+            "renderOrder": 7,
+            "layer": "places",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "CityCenter_Class1 state capital",
+            "when": "$layer == 'places' && (((kind == 'locality') && has(population)) && ((population >= 1000000) && has(region_capital)))",
+            "technique": "text",
+            "attr": {
+                "priority": 58,
+                "size": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [7, 8, 9, 10, 11, 12, 13, 14, 14],
+                    "values": [15, 17, 18, 20, 22, 24, 26, 26, 0]
+                },
+                "color": "#000000",
+                "textFadeTime": 0.75,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "final": true,
+            "renderOrder": 8,
+            "layer": "places",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "CityCenter_Class1",
+            "when": "$layer == 'places' && (((kind == 'locality') && has(population)) && (population >= 1000000))",
+            "technique": "text",
+            "attr": {
+                "priority": 58,
+                "size": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [7, 8, 9, 10, 11, 12, 13, 14, 14],
+                    "values": [15, 17, 18, 20, 22, 24, 26, 26, 0]
+                },
+                "color": "#000000",
+                "textFadeTime": 0.75,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "final": true,
+            "renderOrder": 9,
+            "layer": "places",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "CityCenter_Class2 country capital",
+            "when": "$layer == 'places' && (((kind == 'locality') && has(population)) && ((population >= 250000) && has(country_capital)))",
+            "technique": "text",
+            "attr": {
+                "priority": 57,
+                "size": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [7, 8, 9, 10, 11, 12, 13, 14, 15, 15],
+                    "values": [13, 14, 15, 17, 19, 20, 22, 24, 24, 0]
+                },
+                "color": "#696969",
+                "textFadeTime": 0.75,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "final": true,
+            "renderOrder": 10,
+            "layer": "places",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "CityCenter_Class2 state capital",
+            "when": "$layer == 'places' && (((kind == 'locality') && has(population)) && ((population >= 250000) && has(region_capital)))",
+            "technique": "text",
+            "attr": {
+                "priority": 57,
+                "size": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [7, 8, 9, 10, 11, 12, 13, 14, 15, 15],
+                    "values": [13, 14, 15, 17, 19, 20, 22, 24, 24, 0]
+                },
+                "color": "#696969",
+                "textFadeTime": 0.75,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "final": true,
+            "renderOrder": 11,
+            "layer": "places",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "CityCenter_Class2",
+            "when": "$layer == 'places' && (((kind == 'locality') && has(population)) && (population >= 250000))",
+            "technique": "text",
+            "attr": {
+                "priority": 57,
+                "size": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [7, 8, 9, 10, 11, 12, 13, 14, 15, 15],
+                    "values": [13, 14, 15, 17, 19, 20, 22, 24, 24, 0]
+                },
+                "color": "#696969",
+                "textFadeTime": 0.75,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "final": true,
+            "renderOrder": 12,
+            "layer": "places",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "CityCenter_Class3 country capital",
+            "when": "$layer == 'places' && (((kind == 'locality') && has(population)) && ((population >= 100000) && has(country_capital)))",
+            "technique": "text",
+            "attr": {
+                "priority": 56,
+                "size": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [7, 8, 9, 10, 11, 12, 13, 14, 15, 15],
+                    "values": [12, 12, 13, 14, 15, 17, 19, 21, 21, 0]
+                },
+                "color": "#696969",
+                "textFadeTime": 0.75,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "final": true,
+            "renderOrder": 13,
+            "layer": "places",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "CityCenter_Class3 state capital",
+            "when": "$layer == 'places' && (((kind == 'locality') && has(population)) && ((population >= 100000) && has(region_capital)))",
+            "technique": "text",
+            "attr": {
+                "priority": 56,
+                "size": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [7, 8, 9, 10, 11, 12, 13, 14, 15, 15],
+                    "values": [12, 12, 13, 14, 15, 17, 19, 21, 21, 0]
+                },
+                "color": "#696969",
+                "textFadeTime": 0.75,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "final": true,
+            "renderOrder": 14,
+            "layer": "places",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "CityCenter_Class3",
+            "when": "$layer == 'places' && (((kind == 'locality') && has(population)) && (population >= 100000))",
+            "technique": "text",
+            "attr": {
+                "priority": 56,
+                "size": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [7, 8, 9, 10, 11, 12, 13, 14, 15, 15],
+                    "values": [12, 12, 13, 14, 15, 17, 19, 21, 21, 0]
+                },
+                "color": "#696969",
+                "textFadeTime": 0.75,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "final": true,
+            "renderOrder": 15,
+            "layer": "places",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "CityCenter_Class4 country capital",
+            "when": "$layer == 'places' && (((kind == 'locality') && has(population)) && ((population < 100000) && has(country_capital)))",
+            "technique": "text",
+            "attr": {
+                "priority": 50,
+                "size": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [5, 7, 9, 10, 11, 12, 13, 14, 15, 15],
+                    "values": [10, 11, 11, 12, 13, 15, 17, 18, 18, 0]
+                },
+                "color": "#696969",
+                "textFadeTime": 0.75,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "final": true,
+            "renderOrder": 16,
+            "layer": "places",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "CityCenter_Class4 state capital",
+            "when": "$layer == 'places' && (((kind == 'locality') && has(population)) && ((population < 100000) && has(region_capital)))",
+            "technique": "text",
+            "attr": {
+                "priority": 50,
+                "size": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [5, 7, 9, 10, 11, 12, 13, 14, 15, 15],
+                    "values": [10, 11, 11, 12, 13, 15, 17, 18, 18, 0]
+                },
+                "color": "#696969",
+                "textFadeTime": 0.75,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "final": true,
+            "renderOrder": 17,
+            "layer": "places",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "CityCenter_Class4",
+            "when": "$layer == 'places' && (((kind == 'locality') && has(population)) && (population < 100000))",
+            "technique": "text",
+            "attr": {
+                "priority": 50,
+                "size": {
+                    "interpolation": "Linear",
+                    "zoomLevels": [5, 7, 9, 10, 11, 12, 13, 14, 15, 15],
+                    "values": [10, 11, 11, 12, 13, 15, 17, 18, 18, 0]
+                },
+                "color": "#696969",
+                "textFadeTime": 0.75,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "final": true,
+            "renderOrder": 18,
+            "layer": "places",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "Buildings geometry",
+            "when": "$layer == 'buildings' && ($geometryType ^= 'polygon')",
+            "technique": "extruded-polygon",
+            "attr": {
+                "defaultColor": "#E3ECEE",
+                "opacity": 0.8,
+                "defaultHeight": 10,
+                "roughness": 1.5,
+                "metalness": 1,
+                "emissive": "#B9BBC2",
+                "emissiveIntensity": 1,
+                "vertexColors": true,
+                "footprint": true,
+                "maxSlope": 0.9,
+                "lineWidth": 0.5,
+                "lineColor": "#C5D9DD",
+                "lineColorMix": 0,
+                "lineFadeNear": 0.25,
+                "lineFadeFar": 1
+            },
+            "renderOrder": 2000,
+            "layer": "buildings",
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "Buildings addresses",
+            "when": "$layer ^= 'buildings' && (((kind ^= 'address') && ($geometryType ^= 'point')) && label_placement)",
+            "technique": "text",
+            "attr": {
+                "color": "#A9A9A9",
+                "label": "addr_housenumber",
+                "size": 14.4,
+                "minZoomLevel": 17,
+                "backgroundColor": "#FFFFFF",
+                "backgroundOpacity": 0.5
+            },
+            "renderOrder": 100,
+            "styleSet": "tilezen"
+        },
+        {
+            "description": "Terrain",
+            "when": "$layer ^= 'terrain'",
+            "technique": "terrain",
+            "attr": {
+                "heightBasedColors": {
+                    "heightArray": [
+                        100,
+                        200,
+                        500,
+                        700,
+                        1000,
+                        1500,
+                        2000,
+                        3000,
+                        4000,
+                        5000,
+                        6000,
+                        20000
+                    ],
+                    "colorArray": [
+                        "#0000FF",
+                        "#002AE9",
+                        "#0055D4",
+                        "#007FBF",
+                        "#00AAAA",
+                        "#00D495",
+                        "#00FF80",
+                        "#33CC66",
+                        "#66994C",
+                        "#996633",
+                        "#CC3319",
+                        "#FF0000"
+                    ]
+                },
+                "heightGradientInterpolation": "Discrete",
+                "roughness": 0.9,
+                "metalness": 0.3,
+                "depthTest": true
+            },
+            "renderOrder": 0,
+            "final": true,
+            "styleSet": "terrain"
+        }
+    ]
+}
